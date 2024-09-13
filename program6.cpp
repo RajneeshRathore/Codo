@@ -17,39 +17,63 @@ using namespace std;
 
 class hotel
 {
-    private:
+  private:
     int rno;
     string name;
     float tariff;
     int nod;
-    int amount(int tariff,int nod)
+    int calc(int nod,float tariff)
     {
-        if((nod*tariff)>10000)
-        {
-        return 1.05*nod*tariff;
-        }
-        else{
-         return nod*tariff;   
-        }
+       if((nod*tariff)>10000)
+       {
+         return 1.05*nod*tariff;
+       }  
+       else
+       {
+         return nod*tariff;
+       }
     }
     public:
     void checkin(int rno,string name,float tariff,int nod)
     {
-       this->rno=rno;
-       this->name=name;
-       this->tariff=tariff;
-       this->nod=nod;
+      this->rno=rno;
+      this->name=name;
+      this->tariff=tariff;
+      this->nod=nod;
     }
     void checkout()
     {
-        cout<<"rno = "<<rno<<endl<<"name = "<<name<<endl<<"tariff = "<<tariff<<endl<<"Nod = "<<nod<<endl<<"total = "<<amount(tariff,nod)<<endl;
+      cout<<"room no = "<<rno<<endl<<"Name = "<<name<<endl<<"Tariff = "<<tariff<<endl<<"total amount = "<<calc(nod,tariff)<<endl;
     }
-
 };
 int main()
 {
-    hotel h1;
-    h1.checkin(59,"rajnessh",3000,1000);
-    h1.checkout();
-
+  int n;
+  cout<<"enter the number of customer:\n";
+  cin>>n;
+  int r,nd;
+  float tr;
+  string name;
+    hotel h[n];
+    for(int i=0;i<n;i++)
+    {
+       cout<<"Welcome to hotel\n";
+       cout<<"enter the detais of customer "<<i+1<<endl<<endl;
+       cout<<"enter the room no:";
+       cin>>r;
+       cout<<"enter the name of an customer:";
+       cin>>name;
+       cout<<"enter the no. of days to stay in a hotel:";
+       cin>>nd;
+       cout<<"enter the traffic of an hotel:";
+       cin>>tr;
+       cout<<endl<<endl;
+       cout<<"customer checkout details:";
+       h[i].checkin(r,name,nd,tr);
+       h[i].checkout();  
+       cout<<endl;
+       cout<<"thank you!";
+    }
+    return 0;
+    
 }
